@@ -11,6 +11,7 @@ var new_game = document.querySelector("#new_game")
 new_game.addEventListener("click", newgame);
 var inter;
 var high_score;
+var highscore_display = document.querySelector("#highscore_display");
 checkCookie();
 
 function random_color(){
@@ -130,4 +131,5 @@ function checkCookie() {
 		document.cookie = "highscore=0";
 		high_score = "0";
 	}
+	highscore_display.textContent = high_score;
 }
