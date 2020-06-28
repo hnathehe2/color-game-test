@@ -57,6 +57,7 @@ function wrong_one(){
 	console.log("nope");
 	game_end = true;
 	reset_function();
+	clearInterval(inter);
 	alert("game over");
 }
 
@@ -64,9 +65,9 @@ function right_one(){
 	time+=200
 	score++;
 	score_display.textContent = score;
-	if score>parseInt(high_score)
+	if (score>parseInt(high_score))
 		{
-			setCookie(highscore,score);
+			setCookie("highscore",score);
 		}
 	console.log("yes");
 	reset_function();
@@ -123,8 +124,8 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  high_score = getCookie("highscore");
-  if high_score==""
+  	high_score = getCookie("highscore");
+  	if (high_score=="")
 	{
 		document.cookie = "highscore=0";
 		high_score = "0";
