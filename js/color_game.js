@@ -11,8 +11,7 @@ var new_game = document.querySelector("#new_game")
 new_game.addEventListener("click", newgame);
 var inter;
 
-document.cookie = "highscore = 0";
-var x= document.cookie;
+
 function random_color(){
 	var r; var d_r = 1;
 	var b; var d_b = 1;
@@ -56,14 +55,18 @@ function newgame(){
 function wrong_one(){
 	console.log("nope");
 	game_end = true;
-	alert("game over");
 	reset_function();
+	alert("game over");
 }
 
 function right_one(){
 	time+=200
 	score++;
 	score_display.textContent = score;
+	if score>parseInt(high_score)
+		{
+			setCookie(highscore,score);
+		}
 	console.log("yes");
 	reset_function();
 	special_one =  Math.floor(Math.random()*squares.length);
@@ -97,4 +100,29 @@ function time_remain()
 		reset_function();
 		clearInterval(inter);
 	}
+}
+
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue;
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var high_score = getCookie("highscore");
+  if high_score==""
+	  document.cookie = "highscore=0";
 }
