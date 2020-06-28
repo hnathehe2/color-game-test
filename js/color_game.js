@@ -10,7 +10,8 @@ var game_end = false;
 var new_game = document.querySelector("#new_game")
 new_game.addEventListener("click", newgame);
 var inter;
-
+var high_score;
+checkCookie();
 
 function random_color(){
 	var r; var d_r = 1;
@@ -122,7 +123,10 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-  var high_score = getCookie("highscore");
+  high_score = getCookie("highscore");
   if high_score==""
-	  document.cookie = "highscore=0";
+	{
+		document.cookie = "highscore=0";
+		high_score = "0";
+	}
 }
