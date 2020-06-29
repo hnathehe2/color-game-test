@@ -55,10 +55,10 @@ function newgame(){
 }
 
 function wrong_one(){
+	clearInterval(inter);
 	console.log("nope");
 	game_end = true;
 	reset_function();
-	clearInterval(inter);
 	alert("game over");
 }
 
@@ -69,6 +69,7 @@ function right_one(){
 	if (score>parseInt(high_score))
 		{
 			setCookie("highscore",score);
+			highscore_display.textContent = score;
 		}
 	console.log("yes");
 	reset_function();
