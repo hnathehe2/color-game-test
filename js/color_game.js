@@ -74,6 +74,7 @@ function right_one(){
 		{
 			setCookie("highscore",score);
 			highscore_display.textContent = score;
+			high_score = score;
 		}
 	console.log("yes");
 	reset_function();
