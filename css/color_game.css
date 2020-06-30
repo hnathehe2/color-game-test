@@ -31,7 +31,10 @@ h1 {
 	background-color: black;
 	padding-bottom: 30%;
 	float: left;
-		margin: 1.66%;
+	margin: 1.66%;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
 }
 
 #container {

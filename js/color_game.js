@@ -1,13 +1,12 @@
 var squares = document.querySelectorAll(".square");
-var color; var d_color;
-var diff = 50.0;
+var color; var d_color; var diff = 50.0;
 var special_one = Math.floor(Math.random()*squares.length);
 console.log(special_one);
 var score = 0;
 var score_display = document.querySelector("#score_display");
-var time_display = document.querySelector("#time_display"); var time;
+var time_display = document.querySelector("#time_display"); var time; 
 var game_end = false;
-var new_game = document.querySelector("#new_game")
+var new_game = document.querySelector("#new_game");
 new_game.addEventListener("click", newgame);
 var inter;
 var high_score;
@@ -25,11 +24,17 @@ function random_color(){
 	if (Math.random()>0.5) d_r = -1;
 	if (Math.random()>0.5) d_g = -1;
 	if (Math.random()>0.5) d_b = -1;
+	if (r < diff) d_r = 1;
+	if (g < diff) d_g = 1;
+	if (b < diff) d_b = 1;
+	if (r + diff >= 255) d_r = -1;
+	if (g + diff >= 255) d_g = -1;
+	if (b + diff >= 255) d_b = -1;
 	d_r = d_r * diff;
 	d_g = d_g * diff;
 	d_b = d_b * diff;
 	d_color = "rgb(" + Math.max(Math.min(r+d_r,255),0) + ", " + Math.max(Math.min(g+d_g,255),0) + ", " + Math.max(Math.min(b+d_b,255),0) + ")";
-	diff = diff * 0.9;
+	diff = diff * 0.95;
 }
 
 function reset_function(){
@@ -38,7 +43,6 @@ function reset_function(){
 			squares[i].removeEventListener("click", wrong_one);
 		else
 			squares[i].removeEventListener("click", right_one);
-	console.log("done reset");
 }
 
 function newgame(){
